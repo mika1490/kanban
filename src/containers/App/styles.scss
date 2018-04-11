@@ -1,0 +1,351 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.kanban_board {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 960px;
+
+  .header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background-color: #4C515A;
+    color: white;
+    margin-top: 10px;
+
+    p {
+      margin-left: 15px;
+    }
+
+    span {
+      font-size: 60%;
+      height: 20px;
+      padding: 3px 10px;
+      border: 1px solid white;
+      margin-right: 10px;
+      line-height: 2em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .popup_background {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .hide_popup_button {
+      position: absolute;
+      align-self: flex-end;
+      width: 20px;
+      height: 20px;
+      margin-top: 10px;
+      margin-left: 10px;
+      font-size: 15px;
+      transition: all .2s;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+        background: #78788c;
+        color: white;
+      }
+    }
+
+    #add_edit_card_form {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 300px;
+      height: 420px;
+      background-color: #ffffff;
+      margin-top: 90px;
+      box-shadow: 0 0 40px -10px #000;
+      padding: 0 25px;
+      color: #78788c;
+
+      h2 {
+        width: 170px;
+        padding-bottom: 5px;
+        border-bottom: 3px solid #78788c;
+      }
+
+      .edit_card_form_title {
+        width: 135px;
+      }
+
+      .add_edit_label_container {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .add_edit_label_error {
+          color: red;
+          font-size: 75%;
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+
+      input[type='text'] {
+        border: 0;
+        outline: 0;
+        box-sizing: border-box;
+        border-bottom: solid #bebed2 2px;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        &:focus {
+          border-bottom: solid #78788c 2px;
+        }
+      }
+
+      .priority_select_container {
+        .styled_select {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          box-sizing: border-box;
+          width: 100%;
+          border: 1px solid grey;
+          margin-top: 10px;
+          padding: 5px 15px;
+          text-transform: capitalize;
+
+          #rotate_arrow {
+            position: relative;
+            transform: rotate(-180deg);
+            top: 2px;
+          }
+
+          .select_arrow {
+            color: #78788c;
+          }
+
+          .select_arrow:hover {
+            cursor: pointer;
+            color: #333;
+          }
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+
+          li {
+            box-sizing: border-box;
+            width: 300px;
+            padding: 5px 10px;
+            border: 1px solid grey;
+            border-top: none;
+            background: white;
+
+            &:hover {
+              background: #BFC6D3;
+            }
+          }
+
+          #active_priority {
+            background: rgb(231, 232, 233);
+
+            &:hover {
+              background: #BFC6D3;
+            }
+          }
+        }
+      }
+
+      input[type='submit'] {
+        align-self: flex-end;
+        width: 85px;
+        border: 2px solid #78788c;
+        padding: 6px 0;
+        transition: all 0.2s;
+
+        &:hover {
+          cursor: pointer;
+          background: #78788c;
+          color: white;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .capitalize {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .lists_container {
+    display: flex;
+    flex-flow: row;
+  
+    .card_list {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 319px;
+      
+      h4 {
+        color: #4C515A;
+        margin: 10px;
+      }
+  
+      .card_list_item {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 268px;
+        margin-bottom: 10px;
+        padding: 10px;
+
+        .card_item_title {
+          font-weight: 500;
+          font-size: 100%;
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+
+        .priority_container, .assigned_by_container {
+          display: flex;
+
+          p {
+            margin-right: 3px;
+          }
+
+          .capitalize {
+            text-transform: capitalize;
+          }
+        }
+        
+        p {
+          font-size: 75%;
+          color: #4C515A;
+        }
+
+        .card_item_bottom_row {
+          display: flex;
+          flex-flow: row nowrap;
+
+          .edit_delete_container {
+            display: flex;
+            flex-flow: row nowrap;
+
+            p {
+              padding-right: 10px;
+
+              &:last-child {
+                padding-right: 0;
+              }
+            }
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .assigned_to_container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+
+            p {
+              max-width: 100px;
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .queue_card {
+        border: 1px solid #F7A51C;
+        background-color: #FDF2DE;
+
+        .card_item_bottom_row {
+          .edit_delete_container {
+            p {
+              color: #F7A51C;
+
+              &:hover {
+                color: rgb(235, 131, 4);
+              }
+            }
+          }
+        }
+      }
+
+      .progress_card {
+        border: 1px solid #81CC2D;
+        background-color: #E5FECA;
+
+        .card_item_bottom_row {
+          .edit_delete_container {
+            p {
+              color: #81CC2D;
+
+              &:hover {
+                color: rgb(96, 175, 5);
+              }
+            }
+          }
+        }
+
+        .position_shift_buttons_container {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .done_card {
+        border: 1px solid #BFC6D3;
+        background-color: #F7F8FB;
+
+        .card_item_bottom_row {
+          .edit_delete_container {
+            p {
+              color: #BFC6D3;
+
+              &:hover {
+                color: rgb(146, 157, 175);
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .card_list:nth-child(2n) {
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+    }
+  }
+}
