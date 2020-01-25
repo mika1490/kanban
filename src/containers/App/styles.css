@@ -1,0 +1,220 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif; }
+
+#root {
+  display: flex;
+  justify-content: center; }
+
+.kanban_board {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 960px; }
+  .kanban_board .header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background-color: #4C515A;
+    color: white;
+    margin-top: 10px; }
+    .kanban_board .header_container p {
+      margin-left: 15px; }
+    .kanban_board .header_container span {
+      font-size: 60%;
+      height: 20px;
+      padding: 3px 10px;
+      border: 1px solid white;
+      margin-right: 10px;
+      line-height: 2em; }
+      .kanban_board .header_container span:hover {
+        cursor: pointer; }
+  .kanban_board .popup_background {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); }
+    .kanban_board .popup_background .hide_popup_button {
+      position: absolute;
+      align-self: flex-end;
+      width: 20px;
+      height: 20px;
+      margin-top: 10px;
+      margin-left: 10px;
+      font-size: 15px;
+      transition: all .2s;
+      text-align: center; }
+      .kanban_board .popup_background .hide_popup_button:hover {
+        cursor: pointer;
+        background: #78788c;
+        color: white; }
+    .kanban_board .popup_background #add_edit_card_form {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 300px;
+      height: 420px;
+      background-color: #ffffff;
+      margin-top: 90px;
+      box-shadow: 0 0 40px -10px #000;
+      padding: 0 25px;
+      color: #78788c; }
+      .kanban_board .popup_background #add_edit_card_form h2 {
+        width: 170px;
+        padding-bottom: 5px;
+        border-bottom: 3px solid #78788c; }
+      .kanban_board .popup_background #add_edit_card_form .edit_card_form_title {
+        width: 135px; }
+      .kanban_board .popup_background #add_edit_card_form .add_edit_label_container {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center; }
+        .kanban_board .popup_background #add_edit_card_form .add_edit_label_container .add_edit_label_error {
+          color: red;
+          font-size: 75%; }
+      .kanban_board .popup_background #add_edit_card_form p {
+        margin: 0; }
+      .kanban_board .popup_background #add_edit_card_form input[type='text'] {
+        border: 0;
+        outline: 0;
+        box-sizing: border-box;
+        border-bottom: solid #bebed2 2px;
+        padding: 10px;
+        margin-bottom: 10px; }
+        .kanban_board .popup_background #add_edit_card_form input[type='text']:focus {
+          border-bottom: solid #78788c 2px; }
+      .kanban_board .popup_background #add_edit_card_form .priority_select_container .styled_select {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid grey;
+        margin-top: 10px;
+        padding: 5px 15px;
+        text-transform: capitalize; }
+        .kanban_board .popup_background #add_edit_card_form .priority_select_container .styled_select #rotate_arrow {
+          position: relative;
+          transform: rotate(-180deg);
+          top: 2px; }
+        .kanban_board .popup_background #add_edit_card_form .priority_select_container .styled_select .select_arrow {
+          color: #78788c; }
+        .kanban_board .popup_background #add_edit_card_form .priority_select_container .styled_select .select_arrow:hover {
+          cursor: pointer;
+          color: #333; }
+      .kanban_board .popup_background #add_edit_card_form .priority_select_container ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute; }
+        .kanban_board .popup_background #add_edit_card_form .priority_select_container ul li {
+          box-sizing: border-box;
+          width: 300px;
+          padding: 5px 10px;
+          border: 1px solid grey;
+          border-top: none;
+          background: white; }
+          .kanban_board .popup_background #add_edit_card_form .priority_select_container ul li:hover {
+            background: #BFC6D3; }
+        .kanban_board .popup_background #add_edit_card_form .priority_select_container ul #active_priority {
+          background: #e7e8e9; }
+          .kanban_board .popup_background #add_edit_card_form .priority_select_container ul #active_priority:hover {
+            background: #BFC6D3; }
+      .kanban_board .popup_background #add_edit_card_form input[type='submit'] {
+        align-self: flex-end;
+        width: 85px;
+        border: 2px solid #78788c;
+        padding: 6px 0;
+        transition: all 0.2s; }
+        .kanban_board .popup_background #add_edit_card_form input[type='submit']:hover {
+          cursor: pointer;
+          background: #78788c;
+          color: white; }
+        .kanban_board .popup_background #add_edit_card_form input[type='submit']:focus {
+          outline: none; }
+      .kanban_board .popup_background #add_edit_card_form .capitalize {
+        text-transform: capitalize; }
+  .kanban_board .lists_container {
+    display: flex;
+    flex-flow: row; }
+    .kanban_board .lists_container .card_list {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 319px; }
+      .kanban_board .lists_container .card_list h4 {
+        color: #4C515A;
+        margin: 10px; }
+      .kanban_board .lists_container .card_list .card_list_item {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 268px;
+        margin-bottom: 10px;
+        padding: 10px; }
+        .kanban_board .lists_container .card_list .card_list_item .card_item_title {
+          font-weight: 500;
+          font-size: 100%; }
+          .kanban_board .lists_container .card_list .card_list_item .card_item_title::first-letter {
+            text-transform: uppercase; }
+        .kanban_board .lists_container .card_list .card_list_item .priority_container, .kanban_board .lists_container .card_list .card_list_item .assigned_by_container {
+          display: flex; }
+          .kanban_board .lists_container .card_list .card_list_item .priority_container p, .kanban_board .lists_container .card_list .card_list_item .assigned_by_container p {
+            margin-right: 3px; }
+          .kanban_board .lists_container .card_list .card_list_item .priority_container .capitalize, .kanban_board .lists_container .card_list .card_list_item .assigned_by_container .capitalize {
+            text-transform: capitalize; }
+        .kanban_board .lists_container .card_list .card_list_item p {
+          font-size: 75%;
+          color: #4C515A; }
+        .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row {
+          display: flex;
+          flex-flow: row nowrap; }
+          .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row .edit_delete_container {
+            display: flex;
+            flex-flow: row nowrap; }
+            .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row .edit_delete_container p {
+              padding-right: 10px; }
+              .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row .edit_delete_container p:last-child {
+                padding-right: 0; }
+            .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row .edit_delete_container:hover {
+              cursor: pointer; }
+          .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row .assigned_to_container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%; }
+            .kanban_board .lists_container .card_list .card_list_item .card_item_bottom_row .assigned_to_container p {
+              max-width: 100px;
+              text-transform: capitalize; }
+        .kanban_board .lists_container .card_list .card_list_item p {
+          margin: 0; }
+      .kanban_board .lists_container .card_list .queue_card {
+        border: 1px solid #F7A51C;
+        background-color: #FDF2DE; }
+        .kanban_board .lists_container .card_list .queue_card .card_item_bottom_row .edit_delete_container p {
+          color: #F7A51C; }
+          .kanban_board .lists_container .card_list .queue_card .card_item_bottom_row .edit_delete_container p:hover {
+            color: #eb8304; }
+      .kanban_board .lists_container .card_list .progress_card {
+        border: 1px solid #81CC2D;
+        background-color: #E5FECA; }
+        .kanban_board .lists_container .card_list .progress_card .card_item_bottom_row .edit_delete_container p {
+          color: #81CC2D; }
+          .kanban_board .lists_container .card_list .progress_card .card_item_bottom_row .edit_delete_container p:hover {
+            color: #60af05; }
+        .kanban_board .lists_container .card_list .progress_card .position_shift_buttons_container {
+          display: flex;
+          justify-content: space-between; }
+      .kanban_board .lists_container .card_list .done_card {
+        border: 1px solid #BFC6D3;
+        background-color: #F7F8FB; }
+        .kanban_board .lists_container .card_list .done_card .card_item_bottom_row .edit_delete_container p {
+          color: #BFC6D3; }
+          .kanban_board .lists_container .card_list .done_card .card_item_bottom_row .edit_delete_container p:hover {
+            color: #929daf; }
+    .kanban_board .lists_container .card_list:nth-child(2n) {
+      border-left: 1px solid black;
+      border-right: 1px solid black; }
